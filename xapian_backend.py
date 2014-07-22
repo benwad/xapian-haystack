@@ -422,7 +422,10 @@ class XapianSearchBackend(BaseSearchBackend):
                 document.add_term(document_id)
 
                 # finally, replace or add the document to the database
-                database.replace_document(document_id, document)
+                try:
+                    database.replace_document(document_id, document)
+                except xapian.InvalidArgumentError, ex:
+                    sys.stderr.write('xapian.InvalidArgumentError\n')
 
         except UnicodeDecodeError:
             sys.stderr.write('Chunk failed.\n')
