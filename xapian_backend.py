@@ -61,7 +61,7 @@ XAPIAN_OPTS = {'AND': xapian.Query.OP_AND,
 DEFAULT_CHECK_AT_LEAST = 1000
 
 # field types accepted to be serialized as values in Xapian
-FIELD_TYPES = {'text', 'integer', 'date', 'datetime', 'float', 'boolean'}
+#FIELD_TYPES = {'text', 'integer', 'date', 'datetime', 'float', 'boolean'}
 
 # defines the format used to store types in Xapian
 # this format ensures datetimes are sorted correctly
@@ -1476,7 +1476,7 @@ def _term_to_xapian_value(term, field_type):
     Converts a term to a serialized
     Xapian value based on the field_type.
     """
-    assert field_type in FIELD_TYPES
+#    assert field_type in FIELD_TYPES
 
     def strf(dt):
         """
@@ -1523,7 +1523,7 @@ def _from_xapian_value(value, field_type):
 
     Doesn't accept multivalued fields.
     """
-    assert field_type in FIELD_TYPES
+#    assert field_type in FIELD_TYPES
     if field_type == 'boolean':
         if value == 't':
             return True
