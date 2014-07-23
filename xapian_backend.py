@@ -1048,7 +1048,7 @@ class XapianSearchBackend(BaseSearchBackend):
         term_set = set()
         for term in query:
             for match in re.findall('[^A-Z]+', term):  # Ignore field identifiers
-                term_set.add(database.get_spelling_suggestion(match))
+                term_set.add(database.get_spelling_suggestion(match).decode('utf-8'))
 
         return ' '.join(term_set)
 
